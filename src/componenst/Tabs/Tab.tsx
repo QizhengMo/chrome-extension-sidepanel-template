@@ -1,15 +1,20 @@
 import * as React from "react";
 
 type Props = {
-  title: string;
-  selected?: boolean;
+  tabKey: string;
+  selected: string;
+  setSelected: (key: string) => void;
 };
 
 export function Tab(props: Props) {
-  const { title, selected } = props;
+  const { tabKey, selected, setSelected } = props;
+  const selfSelected = selected === tabKey;
   return (
-    <div>
-      <span style={{ fontWeight: selected ? "bold" : "" }}>{title}</span>
+    <div
+      style={{ fontWeight: selfSelected ? "bold" : "", fontSize: '2em', marginRight: 16 }}
+      onClick={() => setSelected(tabKey)}
+    >
+      {tabKey}
     </div>
   );
 }
