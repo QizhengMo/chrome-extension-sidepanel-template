@@ -22,6 +22,7 @@ const manifest: Manifest.WebExtensionManifest = {
   //   newtab: 'src/pages/newtab/index.html',
   // },
   devtools_page: 'src/pages/devtools/index.html',
+  // @ts-ignore
   side_panel: {
     default_path: "src/pages/panel/index.html",
   },
