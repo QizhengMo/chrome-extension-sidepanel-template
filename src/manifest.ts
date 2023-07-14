@@ -17,13 +17,18 @@ const manifest: Manifest.WebExtensionManifest = {
     default_popup: 'src/pages/popup/index.html',
     default_icon: 'icon-34.png',
   },
-  chrome_url_overrides: {
-    newtab: 'src/pages/newtab/index.html',
+  // rewrite newtab content to custom page
+  // chrome_url_overrides: {
+  //   newtab: 'src/pages/newtab/index.html',
+  // },
+  devtools_page: 'src/pages/devtools/index.html',
+  side_panel: {
+    default_path: "src/pages/panel/index.html",
   },
   icons: {
     '128': 'icon-128.png',
   },
-  permissions: ["activeTab"],
+  permissions: ["activeTab", "sidePanel"],
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
@@ -31,7 +36,6 @@ const manifest: Manifest.WebExtensionManifest = {
       css: ['contentStyle.css'],
     },
   ],
-  devtools_page: 'src/pages/devtools/index.html',
   web_accessible_resources: [
     {
       resources: ['contentStyle.css', 'icon-128.png', 'icon-34.png'],

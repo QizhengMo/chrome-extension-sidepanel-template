@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '@assets/img/logo.svg';
+import {OPEN_PANEL_INSTRUCTION} from "../../../utils/const";
 
 export default function Popup(): JSX.Element {
   return (
