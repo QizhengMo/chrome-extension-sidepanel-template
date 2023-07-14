@@ -19,6 +19,7 @@ specifiers:
   fs-extra: ^11.1.0
   nodemon: ^2.0.20
   postcss: ^8.4.21
+  prettier: ^3.0.0
   react: ^18.2.0
   react-dom: ^18.2.0
   tailwindcss: ^3.2.4
@@ -53,6 +54,7 @@ devDependencies:
   fs-extra: 11.1.1
   nodemon: 2.0.22
   postcss: 8.4.26
+  prettier: 3.0.0
   tailwindcss: 3.3.2_ts-node@10.9.1
   ts-node: 10.9.1_20ba4bc34cd1f1f1c9a13434c041014a
   typescript: 4.9.5
@@ -2260,6 +2262,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha1-3rxkidem5rDnYRiIzsiAM30xY5Y=, tarball: prelude-ls/download/prelude-ls-1.2.1.tgz}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/3.0.0:
+    resolution: {integrity: sha1-57GfaRJFoh1hjGi8VNwGEi9hBa4=, tarball: prettier/download/prettier-3.0.0.tgz}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /prop-types/15.8.1:
