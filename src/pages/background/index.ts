@@ -1,5 +1,9 @@
-console.log('background script loaded');
-// @ts-ignore
-chrome.sidePanel
+function init() {
+  console.log("background script loaded");
+  // allow action icon to open sidePanel
+  // @ts-ignore
+  chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
-    .catch((error: any) => console.error(error));
+}
+init();
+

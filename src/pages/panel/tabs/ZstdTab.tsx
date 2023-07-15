@@ -1,23 +1,28 @@
 import React from "react";
-import {ZstdInit, ZstdCodec} from '@oneidentity/zstd-js';
+// @ts-ignore
+import { Zstd } from "@hpcc-js/wasm/zstd";
+import { useRequest } from "ahooks";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
   const [compressed, setCompressed] = React.useState("");
+  const { data: zstdInstance, loading } = useRequest(() => {
+    return Zstd.load();
+  });
+
   const handleCompress = () => {
-    compress(source).then((compressed) => {
-      setCompressed(compressed)
-    })
-    // setCompressed(btoa(source));
+    setCompressed(compress(zstdInstance, source));
   };
 
   const handleDecode = () => {
-    decompress(compressed).then((source) => {
-      setSource(source)
-    })
+    setSource(decompress(zstdInstance, compressed));
   };
 
-  return (
+  return loading ? (
+    <>
+      <h2>Loading ZSTD instance...</h2>
+    </>
+  ) : (
     <div style={{ width: "100%" }}>
       <div style={{ width: "100%" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -32,7 +37,7 @@ export const ZstdTab = () => {
           style={{ boxSizing: "border-box", width: "100%", minHeight: "300px" }}
         />
 
-        <div style={{height: 24}}/>
+        <div style={{ height: 24 }} />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <span style={{ display: "inline-block" }}>Encoded</span>
           <button onClick={handleDecode}>Decompress</button>
@@ -49,14 +54,23 @@ export const ZstdTab = () => {
   );
 };
 
-async function compress(source: string) {
-  const {ZstdSimple} = await ZstdInit()
-  const data = ZstdSimple.compress(new TextEncoder().encode(source))
-  return new TextDecoder().decode(data).toString()
+function compress(zstd: Zstd, source: string) {
+  const compressedArr = zstd.compress(new TextEncoder().encode(source));
+  return bytesToBase64(compressedArr);
 }
 
-async function decompress(source: string) {
-  const {ZstdSimple} = await ZstdInit()
-  const data = ZstdSimple.decompress(new TextEncoder().encode(source))
-  return new TextDecoder().decode(data).toString();
+function decompress(zstd: Zstd, source: string) {
+  const bytes = base64ToBytes(source);
+  const decompressed = zstd.decompress(bytes);
+  return new TextDecoder().decode(decompressed);
+}
+
+function base64ToBytes(base64: string): Uint8Array {
+  const binString: ArrayLike<string> = atob(base64);
+  return Uint8Array.from<string>(binString, (m: string) => m.codePointAt(0)!);
+}
+
+function bytesToBase64(bytes: Uint8Array) {
+  const binString = Array.from(bytes, (x) => String.fromCodePoint(x)).join("");
+  return btoa(binString);
 }

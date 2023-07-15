@@ -2,7 +2,7 @@ import React from "react";
 import "@pages/panel/Panel.css";
 import { Tab } from "@src/componenst/Tabs/Tab";
 import { Base64Tab } from "@pages/panel/tabs/Base64Tab";
-import { ZstdTab } from "@pages/panel/tabs/zstdTab";
+import { ZstdTab } from "@pages/panel/tabs/ZstdTab";
 import { TabPanels } from "@src/componenst/Tabs/TabPanels";
 
 const TABS = {
