@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "webdev": "vite --port 3000 --open"
   },
   "type": "module",
   "dependencies": {

@@ -2,6 +2,9 @@ import React from "react";
 // @ts-ignore
 import { Zstd } from "@hpcc-js/wasm/zstd";
 import { useRequest } from "ahooks";
+import { ActionButton } from "@src/componenst/ActionButton";
+import { ToolAreaHeader } from "@src/componenst/ToolAreaHeader";
+import { EncodersTextArea } from "@src/componenst/EncodersTextArea";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
@@ -25,29 +28,35 @@ export const ZstdTab = () => {
   ) : (
     <div style={{ width: "100%" }}>
       <div style={{ width: "100%" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span style={{ display: "inline-block" }}>Source</span>
-          <button onClick={handleCompress}>Compress</button>
-        </div>
-        <textarea
+        <ToolAreaHeader
+          name={"Source"}
+          actions={
+            <ActionButton onClick={handleCompress}>Compress</ActionButton>
+          }
+        />
+        <EncodersTextArea
           onInput={(e) => {
             setSource(e.currentTarget.value);
           }}
           value={source}
-          style={{ boxSizing: "border-box", width: "100%", minHeight: "300px" }}
+          style={{ minHeight: "300px" }}
         />
 
         <div style={{ height: 24 }} />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span style={{ display: "inline-block" }}>Encoded</span>
-          <button onClick={handleDecode}>Decompress</button>
-        </div>
-        <textarea
+
+        <ToolAreaHeader
+          name={"Compressed"}
+          actions={
+            <ActionButton onClick={handleDecode}>Decompress</ActionButton>
+          }
+        />
+
+        <EncodersTextArea
           value={compressed}
           onInput={(e) => {
             setCompressed(e.currentTarget.value);
           }}
-          style={{ boxSizing: "border-box", width: "100%", minHeight: "100px" }}
+          style={{ minHeight: "100px" }}
         />
       </div>
     </div>

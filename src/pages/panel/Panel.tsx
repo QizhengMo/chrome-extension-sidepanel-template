@@ -14,9 +14,10 @@ export default function Panel(): JSX.Element {
   const [activeTab, setActiveTab] = React.useState(TABS.BASE64);
 
   return (
-    <div style={{ width: "100%" }}>
-      <h1>Tools</h1>
-      <div style={{ borderBottom: "1px solid black", display: "flex" }}>
+    <div style={{ width: "100%", padding: 24 }}>
+      {/*todo tools switching*/}
+      <h1 className="font-bold">Encoding & Compression Tools</h1>
+      <div style={{ borderBottom: "1px solid black", display: "flex", marginBottom: 24 }}>
         <Tab selected={activeTab} tabKey={TABS.BASE64} setSelected={setActiveTab} />
         <Tab selected={activeTab} tabKey={TABS.ZSTD} setSelected={setActiveTab} />
       </div>

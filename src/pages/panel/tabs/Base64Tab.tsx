@@ -1,4 +1,7 @@
 import React from "react";
+import {ActionButton} from "@src/componenst/ActionButton";
+import {ToolAreaHeader} from "@src/componenst/ToolAreaHeader";
+import {EncodersTextArea} from "@src/componenst/EncodersTextArea";
 
 export const Base64Tab = () => {
   const [source, setSource] = React.useState("");
@@ -14,29 +17,32 @@ export const Base64Tab = () => {
   return (
     <div style={{ width: "100%" }}>
       <div style={{ width: "100%" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span style={{ display: "inline-block" }}>Source</span>
-          <button onClick={handleEncode}>Encode</button>
-        </div>
-        <textarea
+        <ToolAreaHeader
+          name={"Source"}
+          actions={
+            <ActionButton onClick={handleEncode}>Encode</ActionButton>
+          }
+        />
+        <EncodersTextArea
           onInput={(e) => {
             setSource(e.currentTarget.value);
           }}
+          style={{ minHeight: "100px" }}
           value={source}
-          style={{ boxSizing: "border-box", width: "100%", minHeight: "300px" }}
         />
 
-        <div style={{height: 24}}/>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span style={{ display: "inline-block" }}>Encoded</span>
-          <button onClick={handleDecode}>Decode</button>
-        </div>
-        <textarea
+        <ToolAreaHeader
+          name={"Encoded"}
+          actions={
+            <ActionButton onClick={handleDecode}>Decode</ActionButton>
+          }
+        />
+        <EncodersTextArea
           value={encoded}
           onInput={(e) => {
             setEncoded(e.currentTarget.value);
           }}
-          style={{ boxSizing: "border-box", width: "100%", minHeight: "100px" }}
+          style={{ minHeight: "100px" }}
         />
       </div>
     </div>
