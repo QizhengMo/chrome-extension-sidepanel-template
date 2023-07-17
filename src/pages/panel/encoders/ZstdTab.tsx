@@ -5,7 +5,7 @@ import { useRequest } from "ahooks";
 import { ActionButton } from "@src/componenst/ActionButton";
 import { ToolAreaHeader } from "@src/componenst/ToolAreaHeader";
 import { EncodersTextArea } from "@src/componenst/EncodersTextArea";
-import { humanReadableSize } from "@src/utils/BytesUtil";
+import {SizeDisplay} from "@pages/panel/encoders/SizeDisplay";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
@@ -33,7 +33,7 @@ export const ZstdTab = () => {
           name={"Source"}
           actions={
             <div>
-              <Size source={source} />
+              <SizeDisplay source={source} />
               <ActionButton onClick={handleCompress}>Compress</ActionButton>
             </div>
           }
@@ -52,7 +52,7 @@ export const ZstdTab = () => {
           name={"Compressed"}
           actions={
             <div>
-              <Size source={compressed} />
+              <SizeDisplay source={compressed} />
               <ActionButton onClick={handleDecode}>Decompress</ActionButton>
             </div>
           }
@@ -67,14 +67,6 @@ export const ZstdTab = () => {
         />
       </div>
     </div>
-  );
-};
-
-const Size = ({ source }: { source: string }) => {
-  return (
-    <span className="mr-8 text-gray-700 font-semibold font-mono">
-      {humanReadableSize(new TextEncoder().encode(source).byteLength)}
-    </span>
   );
 };
 
