@@ -52,6 +52,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.13
     version: 10.4.14(postcss@8.4.26)
+  daisyui:
+    specifier: ^3.2.1
+    version: 3.2.1(ts-node@10.9.1)
   eslint:
     specifier: ^8.32.0
     version: 8.44.0
@@ -997,7 +1000,7 @@ packages:
     dev: true
 
   /camelcase-css@2.0.1:
-    resolution: {integrity: sha1-7pePaUeRTMMMa0R0G27R338EP9U=, tarball: https://registry.npmmirror.com/camelcase-css/download/camelcase-css-2.0.1.tgz}
+    resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
     dev: true
 
@@ -1046,6 +1049,10 @@ packages:
   /color-name@1.1.4:
     resolution: {integrity: sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=, tarball: https://registry.npmmirror.com/color-name/download/color-name-1.1.4.tgz}
 
+  /colord@2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
+    dev: true
+
   /commander@4.1.1:
     resolution: {integrity: sha1-n9YCvZNilOnp70aj9NaWQESxgGg=, tarball: https://registry.npmmirror.com/commander/download/commander-4.1.1.tgz}
     engines: {node: '>= 6'}
@@ -1068,6 +1075,13 @@ packages:
       which: 2.0.2
     dev: true
 
+  /css-selector-tokenizer@0.8.0:
+    resolution: {integrity: sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==}
+    dependencies:
+      cssesc: 3.0.0
+      fastparse: 1.1.2
+    dev: true
+
   /cssesc@3.0.0:
     resolution: {integrity: sha1-N3QZGZA7hoVl4cCep0dEXNGJg+4=, tarball: https://registry.npmmirror.com/cssesc/download/cssesc-3.0.0.tgz}
     engines: {node: '>=4'}
@@ -1076,6 +1090,19 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha1-HUv51XLxHBQDHwQ24cELwfVx9Qs=, tarball: https://registry.npmmirror.com/csstype/download/csstype-3.1.2.tgz}
+    dev: true
+
+  /daisyui@3.2.1(ts-node@10.9.1):
+    resolution: {integrity: sha512-gIqE6wiqoJt9G8+n3R/SwLeUnpNCE2eDhT73rP0yZYVaM7o6zVcakBH3aEW5RGpx3UkonPiLuvcgxRcb2lE8TA==}
+    engines: {node: '>=16.9.0'}
+    dependencies:
+      colord: 2.9.3
+      css-selector-tokenizer: 0.8.0
+      postcss: 8.4.26
+      postcss-js: 4.0.1(postcss@8.4.26)
+      tailwindcss: 3.3.2(ts-node@10.9.1)
+    transitivePeerDependencies:
+      - ts-node
     dev: true
 
   /damerau-levenshtein@1.0.8:
@@ -1542,6 +1569,10 @@ packages:
 
   /fast-levenshtein@2.0.6:
     resolution: {integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=, tarball: https://registry.npmmirror.com/fast-levenshtein/download/fast-levenshtein-2.0.6.tgz}
+    dev: true
+
+  /fastparse@1.1.2:
+    resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
     dev: true
 
   /fastq@1.15.0:
@@ -2313,7 +2344,7 @@ packages:
     dev: true
 
   /postcss-js@4.0.1(postcss@8.4.26):
-    resolution: {integrity: sha1-YVmBhvNwO6sFLxxPfYBfOZG+6dI=, tarball: https://registry.npmmirror.com/postcss-js/download/postcss-js-4.0.1.tgz}
+    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
       postcss: ^8.4.21

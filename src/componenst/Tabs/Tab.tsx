@@ -11,7 +11,7 @@ export function Tab(props: Props) {
   const selfSelected = selected === tabKey;
   return (
     <div
-      style={{ fontWeight: selfSelected ? "bold" : "", fontSize: '2em', marginRight: 16 }}
+      className={selfSelected ? "tab tab-active" : "tab"}
       onClick={() => setSelected(tabKey)}
     >
       {tabKey}
