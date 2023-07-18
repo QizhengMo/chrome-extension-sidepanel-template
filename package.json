@@ -16,6 +16,7 @@
   "type": "module",
   "dependencies": {
     "@hpcc-js/wasm": "^2.13.0",
+    "@oneidentity/zstd-js": "^1.0.3",
     "ahooks": "^3.7.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 // @ts-ignore
-import { Zstd } from "@hpcc-js/wasm/zstd";
 import { useRequest } from "ahooks";
 import { ActionButton } from "@src/componenst/ActionButton";
 import { ToolAreaHeader } from "@src/componenst/ToolAreaHeader";
 import { EncodersTextArea } from "@src/componenst/EncodersTextArea";
-import {SizeDisplay} from "@pages/panel/encoders/SizeDisplay";
+import { SizeDisplay } from "@pages/panel/encoders/SizeDisplay";
+
+import { ZstdInit } from "@oneidentity/zstd-js";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
   const [compressed, setCompressed] = React.useState("");
-  const { data: zstdInstance, loading } = useRequest(() => {
-    return Zstd.load();
+  const [stream, setStream] = useState(true);
+
+  const { data: zstdInstance, loading } = useRequest(async () => {
+    const { ZstdStream, ZstdSimple } = await ZstdInit();
+    return stream ? ZstdStream : ZstdSimple;
   });
 
   const handleCompress = () => {
-    setCompressed(compress(zstdInstance, source));
+    setCompressed(compress(zstdInstance!, source));
   };
 
   const handleDecode = () => {
-    setSource(decompress(zstdInstance, compressed));
+    setSource(decompress(zstdInstance!, compressed));
   };
 
   return loading ? (
@@ -70,12 +74,20 @@ export const ZstdTab = () => {
   );
 };
 
-function compress(zstd: Zstd, source: string) {
+type Compressor = {
+  compress: (source: Uint8Array) => Uint8Array;
+};
+
+type DeCompressor = {
+  decompress: (source: Uint8Array) => Uint8Array;
+};
+
+function compress(zstd: Compressor, source: string) {
   const compressedArr = zstd.compress(new TextEncoder().encode(source));
   return bytesToBase64(compressedArr);
 }
 
-function decompress(zstd: Zstd, source: string) {
+function decompress(zstd: DeCompressor, source: string) {
   const bytes = base64ToBytes(source);
   const decompressed = zstd.decompress(bytes);
   return new TextDecoder().decode(decompressed);
