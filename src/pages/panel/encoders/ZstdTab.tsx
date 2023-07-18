@@ -6,8 +6,7 @@ import { ToolAreaHeader } from "@src/componenst/ToolAreaHeader";
 import { EncodersTextArea } from "@src/componenst/EncodersTextArea";
 import { SizeDisplay } from "@pages/panel/encoders/SizeDisplay";
 
-import { ZstdCodec, ZstdInit } from "@oneidentity/zstd-js";
-import { data } from "autoprefixer";
+import { ZstdInit } from "@oneidentity/zstd-js";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
