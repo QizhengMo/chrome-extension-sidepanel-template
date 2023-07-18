@@ -6,17 +6,20 @@ import { ToolAreaHeader } from "@src/componenst/ToolAreaHeader";
 import { EncodersTextArea } from "@src/componenst/EncodersTextArea";
 import { SizeDisplay } from "@pages/panel/encoders/SizeDisplay";
 
-import { ZstdInit } from "@oneidentity/zstd-js";
+import { ZstdCodec, ZstdInit } from "@oneidentity/zstd-js";
+import { data } from "autoprefixer";
 
 export const ZstdTab = () => {
   const [source, setSource] = React.useState("");
   const [compressed, setCompressed] = React.useState("");
   const [stream, setStream] = useState(true);
 
-  const { data: zstdInstance, loading } = useRequest(async () => {
-    const { ZstdStream, ZstdSimple } = await ZstdInit();
-    return stream ? ZstdStream : ZstdSimple;
+  const { data: ZstdCodec, loading } = useRequest(async () => {
+    return await ZstdInit();
   });
+  const zstdInstance = React.useMemo(() => {
+    return stream ? ZstdCodec?.ZstdStream : ZstdCodec?.ZstdSimple;
+  }, [loading, stream]);
 
   const handleCompress = () => {
     setCompressed(compress(zstdInstance!, source));
@@ -31,8 +34,17 @@ export const ZstdTab = () => {
       <h2>Loading ZSTD instance...</h2>
     </>
   ) : (
-    <div style={{ width: "100%" }}>
-      <div style={{ width: "100%" }}>
+    <div className="w-full">
+      <div className="w-full">
+        <div className="w-full flex justify-end mb-3">
+          <span className="label-text mr-2">Enable Stream</span>
+          <input
+            type="checkbox"
+            checked={stream}
+            onChange={(e) => setStream(e.target.checked)}
+            className="checkbox"
+          />
+        </div>
         <ToolAreaHeader
           name={"Source"}
           actions={

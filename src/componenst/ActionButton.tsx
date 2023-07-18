@@ -1,7 +1,7 @@
 import * as React from 'react';
 export function ActionButton(props: any) {
   return (
-    <button {...props} className="btn">
+    <button {...props} className="btn btn-sm">
       {props.children}
     </button>
     );
