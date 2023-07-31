@@ -1,5 +1,6 @@
-## Fork from [JohnBra](https://github.com/JohnBra/vite-web-extension)
+# Chrome Extension SidePanel Template
 
+## Basic template fork from [JohnBra](https://github.com/JohnBra/vite-web-extension)
 
 ## SidePanel
 1. see src/manifest.ts [side_panel] field for config
