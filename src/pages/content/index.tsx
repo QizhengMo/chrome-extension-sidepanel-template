@@ -1,16 +1,29 @@
-import { createRoot } from 'react-dom/client';
-const div = document.createElement('div');
+import { createRoot } from "react-dom/client";
+import React, { createContext } from "react";
+import { ContentApp } from "@pages/content/ContentApp";
+import { GLOBAL_OPEN_MODAL_COMMAND } from "../../../utils/constants";
+import './style.css'
+
+const div = document.createElement("div");
 document.body.appendChild(div);
 
 const root = createRoot(div);
-root.render(
-    <div>
-      Content from content/index.tsx
-    </div>
-);
+export const ModalStateContext = createContext(false);
+let isOpen = true;
 
 try {
-  console.log('content script loaded');
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.request == GLOBAL_OPEN_MODAL_COMMAND) {
+      isOpen = !isOpen;
+    }
+  });
 } catch (e) {
-  console.error(e);
+  console.log("NOT IN Chrome ENV")
 }
+
+
+root.render(
+  <ModalStateContext.Provider value={isOpen}>
+    <ContentApp />
+  </ModalStateContext.Provider>,
+);

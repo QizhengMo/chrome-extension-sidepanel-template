@@ -7,6 +7,10 @@ module.exports = {
       }
     },
   },
-  prefix: '',
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    prefix: "chrome-ext-pre-",
+    themes: ["lofi"],
+
+  }
 }

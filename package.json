@@ -28,6 +28,7 @@
     "@types/webextension-polyfill": "^0.10.0",
     "@vitejs/plugin-react-swc": "^3.0.1",
     "autoprefixer": "^10.4.13",
+    "daisyui": "^3.5.0",
     "fs-extra": "^11.1.0",
     "nodemon": "^2.0.20",
     "postcss": "^8.4.21",

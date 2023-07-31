@@ -40,6 +40,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.13
     version: 10.4.14(postcss@8.4.26)
+  daisyui:
+    specifier: ^3.5.0
+    version: 3.5.0(ts-node@10.9.1)
   fs-extra:
     specifier: ^11.1.0
     version: 11.1.1
@@ -624,6 +627,10 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /colord@2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
+    dev: true
+
   /commander@4.1.1:
     resolution: {integrity: sha1-n9YCvZNilOnp70aj9NaWQESxgGg=, tarball: https://registry.npmmirror.com/commander/download/commander-4.1.1.tgz}
     engines: {node: '>= 6'}
@@ -637,6 +644,13 @@ packages:
     resolution: {integrity: sha1-wdfo8eX2z8n/ZfnNNS03NIdWwzM=, tarball: https://registry.npmmirror.com/create-require/download/create-require-1.1.1.tgz}
     dev: true
 
+  /css-selector-tokenizer@0.8.0:
+    resolution: {integrity: sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==}
+    dependencies:
+      cssesc: 3.0.0
+      fastparse: 1.1.2
+    dev: true
+
   /cssesc@3.0.0:
     resolution: {integrity: sha1-N3QZGZA7hoVl4cCep0dEXNGJg+4=, tarball: https://registry.npmmirror.com/cssesc/download/cssesc-3.0.0.tgz}
     engines: {node: '>=4'}
@@ -645,6 +659,19 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha1-HUv51XLxHBQDHwQ24cELwfVx9Qs=, tarball: https://registry.npmmirror.com/csstype/download/csstype-3.1.2.tgz}
+    dev: true
+
+  /daisyui@3.5.0(ts-node@10.9.1):
+    resolution: {integrity: sha512-wSaeXwaYdMv4yURv9wj7kKQQN9Jyumfh/skIpZfCNkCb2jLf/so+iNKSM8l4rDN0TRvB5OccMlAvsf2UAtk2gg==}
+    engines: {node: '>=16.9.0'}
+    dependencies:
+      colord: 2.9.3
+      css-selector-tokenizer: 0.8.0
+      postcss: 8.4.26
+      postcss-js: 4.0.1(postcss@8.4.26)
+      tailwindcss: 3.3.2(ts-node@10.9.1)
+    transitivePeerDependencies:
+      - ts-node
     dev: true
 
   /debug@3.2.7(supports-color@5.5.0):
@@ -719,6 +746,10 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: true
+
+  /fastparse@1.1.2:
+    resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
     dev: true
 
   /fastq@1.15.0:

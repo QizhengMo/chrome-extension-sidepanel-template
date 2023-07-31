@@ -1,5 +1,6 @@
 import type { Manifest } from 'webextension-polyfill';
 import pkg from '../package.json';
+import {GLOBAL_OPEN_MODAL_COMMAND} from "../utils/constants";
 
 const manifest: Manifest.WebExtensionManifest = {
   manifest_version: 3,
@@ -12,6 +13,15 @@ const manifest: Manifest.WebExtensionManifest = {
   background: {
     service_worker: 'src/pages/background/index.js',
     type: 'module',
+  },
+  "commands": {
+    [GLOBAL_OPEN_MODAL_COMMAND]: {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
+      },
+      "description": "Open command menu"
+    }
   },
   action: {
     default_popup: 'src/pages/popup/index.html',
