@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JohnBra/web-extension.git"
+    "url": "https://github.com/QizhengMo/chrome-extension-sidepanel-template"
   },
   "scripts": {
     "build": "vite build",

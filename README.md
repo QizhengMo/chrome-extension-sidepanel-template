@@ -15,3 +15,6 @@
 ## Dev Server Preview Mode
 1. Change script in index.html
 2. Use **npm run webdev** to preview using dev server
+
+## MISC
+1. Remove registry setting in /.npmrc if you want to use your own registry
